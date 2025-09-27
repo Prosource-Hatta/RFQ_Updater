@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.1">
+  <Id>c0a92c9a-4875-4c2d-8d21-75f04be3845e</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Generic Templates</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Generic Reply Templates" />
+  <Description DefaultValue="Create reply-all drafts using stored templates and automatic CC rules." />
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png" />
+  <SupportUrl DefaultValue="https://localhost:3000/support" />
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.10">
+      <Set Name="Mailbox" />
+    </Sets>
+  </Requirements>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit" />
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xsi:type="mailappor:VersionOverrides" Version="1.0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.10">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="mailappor:MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="residFunctionFile" />
+          <ExtensionPoint xsi:type="mailappor:MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="residGroupLabel" />
+                <Control xsi:type="mailappor:Button" id="msgReadOpenPane">
+                  <Label resid="residButtonLabel" />
+                  <Supertip>
+                    <Title resid="residButtonTitle" />
+                    <Description resid="residButtonDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="residIcon16" />
+                    <bt:Image size="32" resid="residIcon32" />
+                    <bt:Image size="80" resid="residIcon80" />
+                  </Icon>
+                  <Action xsi:type="mailappor:ShowTaskpane">
+                    <SourceLocation resid="residTaskpaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+          <ExtensionPoint xsi:type="mailappor:MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgComposeGroup">
+                <Label resid="residGroupLabel" />
+                <Control xsi:type="mailappor:Button" id="msgComposeOpenPane">
+                  <Label resid="residButtonLabel" />
+                  <Supertip>
+                    <Title resid="residButtonTitle" />
+                    <Description resid="residButtonDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="residIcon16" />
+                    <bt:Image size="32" resid="residIcon32" />
+                    <bt:Image size="80" resid="residIcon80" />
+                  </Icon>
+                  <Action xsi:type="mailappor:ShowTaskpane">
+                    <SourceLocation resid="residTaskpaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="residIcon16" DefaultValue="https://localhost:3000/assets/icon-32.png" />
+        <bt:Image id="residIcon32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
+        <bt:Image id="residIcon80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="residTaskpaneUrl" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="residFunctionFile" DefaultValue="https://localhost:3000/commands.html" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="residButtonLabel" DefaultValue="Generic Templates" />
+        <bt:String id="residButtonTitle" DefaultValue="Create template-based replies" />
+        <bt:String id="residGroupLabel" DefaultValue="Generic Templates" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="residButtonDescription" DefaultValue="Open the Generic Templates pane to craft reply-all drafts and manage stored templates." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
